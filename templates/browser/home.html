@@ -1,0 +1,10 @@
+{% block content %}
+    {% for item in data %}
+        <ul>
+            <li>item.title</li>
+            <li>item.subtitle</li>
+            <li>item.content</li>
+            <li>Criado em: item.created</li>
+        </ul>
+    {% endfor %}
+{% endblock %}
