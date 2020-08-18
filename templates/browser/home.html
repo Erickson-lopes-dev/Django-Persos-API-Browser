@@ -1,10 +1,15 @@
+{% extends 'layout.html' %}
+
 {% block content %}
+
     {% for item in data %}
         <ul>
-            <li>item.title</li>
-            <li>item.subtitle</li>
-            <li>item.content</li>
-            <li>Criado em: item.created</li>
+            <li>{{ item.title }}</li>
+            <li>{{ item.sub_title }}</li>
+            <li>{{ item.content }}</li>
+            <li>{% for cat in item.categories.all %}{{ cat.name }} {% endfor %}</li>
+            <li>Criado em: {{ item.created }}</li>
         </ul>
     {% endfor %}
+
 {% endblock %}
