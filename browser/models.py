@@ -15,9 +15,11 @@ class Persos(models.Model):
     sub_title = models.CharField(max_length=255, null=True, blank=True)
     content = models.TextField()
     created = models.DateField(auto_now=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name='persos', on_delete=models.CASCADE)
     categories = models.ManyToManyField(CategoryContent)
+
+    class Meta:
+        ordering = ['created']
 
     def __str__(self):
         return self.title
-
