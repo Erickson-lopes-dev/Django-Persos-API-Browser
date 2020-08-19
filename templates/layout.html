@@ -8,8 +8,14 @@
 
 <table>
     <tr>
-        <th><a href="">Home</a></th>
-        <th><a href="">List</a></th>
+        <th><a href="{% url 'home' %}">Home</a></th>
+        {% if user.is_authenticated %}
+            <th><a href="{% url 'create' %}">Criar Novo</a></th>
+            <th><a href="">Meus</a></th>
+        {% else %}
+            <th><a href="{% url 'login' %}">Fazer login</a></th>
+            <th><a href="{% url 'register' %}">Registrar-se</a></th>
+        {% endif %}
     </tr>
 </table>
 
@@ -17,5 +23,11 @@
 
     {% endblock %}
 
+<br/>
+
+{% if user.is_authenticated %}
+    Seja bem vindo! {{ user.username }}
+    <a href="{% url 'logout' %}">Logout</a>
+{% endif %}
 </body>
 </html>

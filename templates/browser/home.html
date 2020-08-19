@@ -4,11 +4,14 @@
 
     {% for item in data %}
         <ul>
-            <li>{{ item.title }}</li>
-            <li>{{ item.sub_title }}</li>
+            <li><a href="{% url 'single_detail' item.id %}">{{ item.title }}</a></li>
+            {% if object.sub_title %}
+                <li>{{ object.sub_title }}</li>
+            {% endif %}
             <li>{{ item.content }}</li>
             <li>{% for cat in item.categories.all %}{{ cat.name }} {% endfor %}</li>
             <li>Criado em: {{ item.created }}</li>
+            <li>by: {{ item.user }}</li>
         </ul>
     {% endfor %}
 

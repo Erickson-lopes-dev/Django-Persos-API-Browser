@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<form method="post">{% csrf_token %}
+    <p>Realmente deseja deletar ? "{{ object.title }}"?</p>
+    <input type="submit" value="Deletar">
+</form>
+
+{% endblock %}

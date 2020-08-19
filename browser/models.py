@@ -12,7 +12,7 @@ class CategoryContent(models.Model):
 
 class Persos(models.Model):
     title = models.CharField(max_length=100)
-    sub_title = models.CharField(max_length=255)
+    sub_title = models.CharField(max_length=255, null=True, blank=True)
     content = models.TextField()
     created = models.DateField(auto_now=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
