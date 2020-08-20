@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Aplicações do sistema
     'rest_framework',
     'api',
     'browser',
@@ -49,6 +50,7 @@ ROOT_URLCONF = 'Persos.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        # Definindo caminho dos templates
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -94,8 +96,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# linguagem
 LANGUAGE_CODE = 'pt-br'
 
+# Horario
 TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
@@ -104,17 +108,25 @@ USE_L10N = True
 
 USE_TZ = True
 
+# url dos arquivos staticos
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = ['static']
+# Pasta onde fica os arquivos estaticos(js, css)
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
+# Redirecinar após fazer login
 LOGIN_REDIRECT_URL = 'home'
 
+# Redirecinar após fazer logout
 LOGOUT_REDIRECT_URL = 'home'
 
+
 REST_FRAMEWORK = {
+    # configurando param sistema de autênticação
     'DEFAULT_AUTHENTICATION_CLASSES': [
+        # termos básicos de authenticação
         'rest_framework.authentication.BasicAuthentication',
+        # termos de autênticação via sessão
         'rest_framework.authentication.SessionAuthentication',
     ],
 }

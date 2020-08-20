@@ -5,17 +5,23 @@ from django.views.generic.base import View
 
 from browser.models import Persos
 
-
+# View da pagina Home
 class Home(View):
+    # se o método for get
     def get(self, request):
+        # pega todos os itens do Persos
         data = Persos.objects.all()
+        # retornar para a página home os dados recebido para ser exibido
         return render(request, 'browser/home.html', {'data': data})
 
 
+# View Detalhes do Persos
 class SingleContent(DetailView):
+    # modelo de dados que irá utilizar
     model = Persos
 
 
+# View para criar
 class CreateContent(CreateView):
     # modelo de dados que irá utilizar
     model = Persos
@@ -33,12 +39,19 @@ class CreateContent(CreateView):
     success_url = reverse_lazy('home')
 
 
+# View para Update
 class UpdateContent(UpdateView):
+    # Especificando o modelo de dados que será usado
     model = Persos
+    # Especificando os campos que devera conter o form
     fields = ['title', 'sub_title', 'content', 'categories']
+    # Nome da url que será enviada após o sucesso do update
     success_url = reverse_lazy('home')
 
 
+# View para Deletar
 class DeleteContent(DeleteView):
+    # Especificando o modelo de dados que será usado
     model = Persos
+    # Nome da url que será enviada após o sucesso do update
     success_url = reverse_lazy('home')
