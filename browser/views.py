@@ -1,9 +1,11 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import DetailView, CreateView, UpdateView, DeleteView, ListView
 from django.views.generic.base import View
 
 from browser.models import Persos
+
 
 # View da pagina Home
 class Home(View):
@@ -55,3 +57,14 @@ class DeleteContent(DeleteView):
     model = Persos
     # Nome da url que será enviada após o sucesso do update
     success_url = reverse_lazy('home')
+
+
+# Lista os objetos criado pelo usuário especificado
+class MyPersos(ListView):
+    # Configurando o nome do objeto com os dados
+    context_object_name = 'objects'
+
+    # Definindo queryset
+    def get_queryset(self):
+        # retornando todos os persos do usuário registrado
+        return Persos.objects.filter(user=self.request.user.id)

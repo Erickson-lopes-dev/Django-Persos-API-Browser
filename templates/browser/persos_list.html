@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    {% for object in objects %}
+        <ul>
+            <li><a href="{% url 'single_detail' object.id %}">{{ object.title }}</a></li>
+            {% if object.sub_title %}
+                <li>{{ object.sub_title }}</li>
+            {% endif %}
+            <li>{{ item.content }}</li>
+            <li>{% for cat in item.categories.all %}{{ cat.name }} {% endfor %}</li>
+            <li>Criado em: {{ item.created }}</li>
+            <li><a href="{% url 'update' ob %}">Editar</a>   <a href="">Exluir</a></li>
+        </ul>
+    {% endfor %}
+
+{% endblock %}
