@@ -1,5 +1,7 @@
 {% extends 'layout.html' %}
 
+{% block title %}{{ object.title }} - Atualizar {% endblock %}
+
 {% block content %}
     <form method="post">
         {% csrf_token %}

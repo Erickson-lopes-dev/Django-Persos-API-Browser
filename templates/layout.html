@@ -2,9 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
+
+{% if user.is_authenticated %}
+    Seja bem vindo! {{ user.username }}
+    <a href="{% url 'logout' %}">Logout</a>
+{% endif %}
 
 <table>
     <tr>
@@ -18,16 +23,8 @@
         {% endif %}
     </tr>
 </table>
-
     {% block content %}
 
     {% endblock %}
-
-<br/>
-
-{% if user.is_authenticated %}
-    Seja bem vindo! {{ user.username }}
-    <a href="{% url 'logout' %}">Logout</a>
-{% endif %}
 </body>
 </html>

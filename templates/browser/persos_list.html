@@ -1,5 +1,7 @@
 {% extends 'layout.html' %}
 
+{% block title %}Meus Persos{% endblock %}
+
 {% block content %}
 
     {% for object in objects %}
@@ -8,10 +10,10 @@
             {% if object.sub_title %}
                 <li>{{ object.sub_title }}</li>
             {% endif %}
-            <li>{{ item.content }}</li>
-            <li>{% for cat in item.categories.all %}{{ cat.name }} {% endfor %}</li>
-            <li>Criado em: {{ item.created }}</li>
-            <li><a href="{% url 'update' ob %}">Editar</a>   <a href="">Exluir</a></li>
+            <li>{{ object.content }}</li>
+            <li>{% for cat in object.categories.all %}{{ cat.name }} {% endfor %}</li>
+            <li>Criado em: {{ object.created }}</li>
+            <li><a href="{% url 'update' object.id %}">Editar</a>   <a href="{% url 'delete' object.id %}">Excluir</a></li>
         </ul>
     {% endfor %}
 

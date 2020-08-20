@@ -43,6 +43,8 @@ class CreateContent(CreateView):
 
 # View para Update
 class UpdateContent(UpdateView):
+    # caminho do template
+    template_name = 'browser/persos_update_form.html'
     # Especificando o modelo de dados que será usado
     model = Persos
     # Especificando os campos que devera conter o form
